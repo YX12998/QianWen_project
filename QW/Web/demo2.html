@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/Web/bootstrap/css/bootstrap.css">
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+				background: #F1F1F1;
+			}
+			.logo{
+				margin: 30px;
+			}
+			.login {
+				box-shadow: 2px 2px 2px gray;
+				background: #fff;
+				padding: 50px;
+			}
+			
+			.title{
+				display: flex;
+				justify-content: center;
+				/* margin-bottom: 40px; */
+			}
+			.title>a{
+				display: block;
+				font-size: 18px;
+				padding:10px 15px;
+				color: black;
+				text-align: center;
+				text-decoration: none;
+			}
+			.title>a:nth-of-type(3){
+				border-bottom: 2px solid #EA7864;
+			}
+			.title>a:nth-of-type(1):hover{
+				border-bottom: 2px solid #EA7864;
+			}
+			#form01{
+				margin-top: 40px;
+				display: flex;
+				justify-content: center;
+			}
+			#form01 input{
+				outline: none;
+				display: block;
+				width: 300px;
+				height: 50px;
+				margin: 0;
+				padding: 0;
+			}
+			#inpu01,#inpu02{
+				padding-left: 30px;
+				border: 1px solid #C8C8C8;
+				background: #F7F7F7;
+				border-radius: 5px;
+			}
+			.bt_denglu{
+				margin-top: 40px;
+			}
+			#loginBt{
+				border: 0;
+				background: #42C02E;
+				color: #fff;
+				height: 40px;
+				border-radius: 25px;
+				box-shadow: 1px 1px 1px seagreen;
+			}
+			#loginBt:hover{
+				background: #34b22d;
+			}
+			.name01, .mm{
+				position: relative;
+			}
+			.name01>span,.mm>span{
+				font-size: 18px;
+				color: #969696;
+				position: absolute;
+				margin: 14px;
+			}
+			@media(max-width: 800px) {
+				.logo{
+					display: none;
+				}
+				body{
+					background: #fff;
+				}
+				.login{
+					box-shadow: 0 0 0 #fff;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="logo">
+			<a href="">
+				<img src="/Web/imgs/QW.png">
+			</a>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-0"></div>
+				<div class="col-md-4 col-sm-12 login">
+					<div class="title">
+						<a style="color: #969696;" href="demo.html">
+							登录
+						</a>
+						<a style="color: #969696;"> | </a>
+						<a style="color: #EA7864; font-weight: 600;" href="">
+							注册
+						</a>
+					</div>
+					<form id="form01" action="" method="">
+						<div>
+							<div class="name01">
+								<span class="glyphicon glyphicon-user"></span>
+								<input style="padding-left: 40px;" id="inpu01" type="text" placeholder="请设置用户名">
+							</div>
+							<div class="mm">
+								<span class="glyphicon glyphicon-lock"></span>
+								<input style="padding-left: 40px;" id="inpu02" type="password" placeholder="请设置密码">
+							</div>
+							<div class="bt_denglu">
+								<input id="loginBt" type="button" value="注册">
+							</div>
+						</div>
+						
+					</form>
+					<br>
+				</div>
+				<div class="col-md-4 col-sm-0"></div>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="/Web/js/jquery-2.js"></script>
+<script src="/Web/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#loginBt").click(function() {
+			
+			// 这里可以进行一个判断,如果密码或者用户一个错误则返回重新登录
+			$.ajax({
+				url: '/regist',
+				data: {
+					userName: $("#inpu01").val(),
+					userPassword: $("#inpu02").val(),
+				},
+				type: 'post',
+				dataType: 'json',
+				success: function(res) {
+					if (res.ok) {
+						alert("注册成功,返回页面重新登录");
+						window.location = "/";
+					}else if(res.y){
+						alert("用户名已存在");
+						window.location = "/Web/demo2.html";
+					}
+					 else {
+						if(res.w){
+							alert("请输入用户名");
+							window.location = "/Web/demo2.html";
+						}else if(res.q){
+							alert("请输入密码");
+							window.location = "/Web/demo2.html";
+						}
+					}
+				},
+				error: function(a, b) {
+				
+					console.info(a);
+				}
+			});
+		});
+		
+		$("#returnBt").click(function(){
+			
+			window.location = "http://localhost:7777";
+		})
+	})
+</script>
