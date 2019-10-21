@@ -4,132 +4,150 @@
 		<meta charset="utf-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script type="text/javascript" src="js/jquery-2.js"></script>
-		<meta http-equiv="X-UA-Compatible" content="sie-edge" />
-		<meta name="viewport" content="width-device-width,initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
-	<!-- 	<style type="text/css">
+		<link rel="stylesheet" href="/Web/bootstrap/css/bootstrap.css">
+		<style type="text/css">
 			body {
-				/* background: url(images/1.png)repeat; */
-				background: #1B6D85;
+				margin: 0;
+				padding: 0;
+				background: #F1F1F1;
 			}
-
-			.lie {
-				background: gold;
-				margin-top: 25%;
-				background: url(imgs/1.png)repeat;
-				
+			.logo{
+				margin: 30px;
 			}
-			.lie1{
-				margin-top: 5%;
+			.login {
+				box-shadow: 2px 2px 2px gray;
+				background: #fff;
+				padding: 50px;
 			}
-			.lie1{
-				margin-top: 5%;
+			
+			.title{
+				display: flex;
+				justify-content: center;
+				/* margin-bottom: 40px; */
 			}
-
-			p {
-				margin-top: 10%;
-				font-size: 30px;
-				font-weight: 500;
+			.title>a{
+				display: block;
+				font-size: 18px;
+				padding:10px 15px;
+				color: black;
 				text-align: center;
+				text-decoration: none;
 			}
-			.button:hover{
-				background: gold;	
+			.title>a:nth-of-type(3){
+				border-bottom: 2px solid #EA7864;
 			}
-		</style> -->
-		
+			.title>a:nth-of-type(1):hover{
+				border-bottom: 2px solid #EA7864;
+			}
+			#form01{
+				margin-top: 40px;
+				display: flex;
+				justify-content: center;
+			}
+			#form01 input{
+				outline: none;
+				display: block;
+				width: 300px;
+				height: 50px;
+				margin: 0;
+				padding: 0;
+			}
+			#inpu01,#inpu02{
+				padding-left: 30px;
+				border: 1px solid #C8C8C8;
+				background: #F7F7F7;
+				border-radius: 5px;
+			}
+			.bt_denglu{
+				margin-top: 40px;
+			}
+			#loginBt{
+				border: 0;
+				background: #42C02E;
+				color: #fff;
+				height: 40px;
+				border-radius: 25px;
+				box-shadow: 1px 1px 1px seagreen;
+			}
+			#loginBt:hover{
+				background: #34b22d;
+			}
+			.name01, .mm{
+				position: relative;
+			}
+			.name01>span,.mm>span{
+				font-size: 18px;
+				color: #969696;
+				position: absolute;
+				margin: 14px;
+			}
+			@media(max-width: 800px) {
+				.logo{
+					display: none;
+				}
+				body{
+					background: #fff;
+				}
+				.login{
+					box-shadow: 0 0 0 #fff;
+				}
+			}
+		</style>
 	</head>
 	<body>
-<!-- 		<div class="container">
+		<div class="logo">
+			<a href="">
+				<img src="/Web/imgs/QW.png">
+			</a>
+		</div>
+		<div class="container">
 			<div class="row">
-				<div class="col-md-4 col-md-offset-5 lie">
-					<div class="row">
-						<div class="col-md-10 col-md-offset-1">
-							<p>日记注册系统</p>
+				<div class="col-md-4 col-sm-0"></div>
+				<div class="col-md-4 col-sm-12 login">
+					<div class="title">
+						<a style="color: #969696;" href="login.html">
+							登录
+						</a>
+						<a style="color: #969696;"> | </a>
+						<a style="color: #EA7864; font-weight: 600;" href="">
+							注册
+						</a>
+					</div>
+					<form id="form01" action="" method="">
+						<div>
+							<div class="name01">
+								<span class="glyphicon glyphicon-user"></span>
+								<input style="padding-left: 40px;" id="inpu01" type="text" placeholder="请设置用户名">
+							</div>
+							<div class="mm">
+								<span class="glyphicon glyphicon-lock"></span>
+								<input style="padding-left: 40px;" id="inpu02" type="password" placeholder="请设置密码">
+							</div>
+							<div class="bt_denglu">
+								<input id="loginBt" type="button" value="注册">
+							</div>
 						</div>
 						
-							<div class="col-md-10 col-md-offset-1 lie1" >
-								<div class="input-group">
-									<span class="input-group-addon">
-										<img src="imgs/user.png" >
-									</span>
-									<input type="text" class="form-control " placeholder="请输入用户名" name="userName" id="userName">
-								</div>	
-							</div>
-							<div class="col-md-10 col-md-offset-1 lie1">
-								<div class="input-group">
-									<span class="input-group-addon">
-										<img src="imgs/lock.png" >
-									</span>
-									<input type="password"  class="form-control" placeholder="请输入密码" name="userPassword" id="userPassword">
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-md-3 col-md-offset-4 lie1">
-									<input type="submit"  class="form-control button" value="返回" id="returnBt" />
-									
-								</div>
-								<div class="col-md-3 col-md-offset-0 lie1">
-									<input type="submit"  class="form-control button" value="注册" id="registBt" />
-									<br>
-									
-								</div>
-							</div>
-						
-					</div>
-				</div>
-
-			</div>
-		</div>
-		 -->
-		
-		<div class="container" >
-			<div class="form-container sign-in-container">
-				<div class="overlay">
-					<div class="overlay-panel overlay-right">
-						<h1>欢迎光临</h1>
-						<p>输入您的个人资料，并与我们一起开始旅程</p>
-							<input type="submit"  class="form-control button" value="返回" id="returnBt" style="width: 150px;height: 40px;  background: orangered;color: white;border-radius: 40px;" />
-						
-					</div>
-				</div>
-			</div>
-			<div class="form-container " >
-				<div class="overlay-panel " style="margin: left;left:560px;">
-					<form >
-						<h1>注册</h1>
-						<input type="email" placeholder="账户" name="userName" id="userName">
-						<input type="password" placeholder="密码"  name="userPassword" id="userPassword">
-							<input type="submit"  class="form-control button" value="注册" id="registBt" style="width: 150px;height: 40px;  background: orangered;color: white;border-radius: 40px;" />
-						
 					</form>
+					<br>
 				</div>
-				
+				<div class="col-md-4 col-sm-0"></div>
 			</div>
-		
 		</div>
-		
-		
-		
-		
-		
-		
-		
 	</body>
 </html>
-<script src="js/jquery-2.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
+<script src="/Web/js/jquery-2.js"></script>
+<script src="/Web/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#registBt").click(function() {
+		$("#loginBt").click(function() {
 			
 			// 这里可以进行一个判断,如果密码或者用户一个错误则返回重新登录
 			$.ajax({
 				url: '/regist',
 				data: {
-					userName: $("#userName").val(),
-					userPassword: $("#userPassword").val(),
+					userName: $("#inpu01").val(),
+					userPassword: $("#inpu02").val(),
 				},
 				type: 'post',
 				dataType: 'json',
@@ -142,8 +160,6 @@
 						window.location = "/Web/regist.html";
 					}
 					 else {
-						// alert("用户名为空或已存在");
-						// window.location = "/Web/regist.html";
 						if(res.w){
 							alert("请输入用户名");
 							window.location = "/Web/regist.html";
@@ -166,271 +182,3 @@
 		})
 	})
 </script>
-
-<style type="text/css">
-		
-		
-		* {
-		    box-sizing: border-box;
-		}
-		
-		
-		body {
-		    font-family: 'Montserrat', sans-serif;
-		    background: #f6f5f7;
-		    display: flex;
-		    flex-direction: column;
-		    justify-content: center;
-		    align-items: center;
-		    height: 100vh;
-		    margin: -20px 0 50px;
-		    background-image:url(/Web/imgs/img1.png);
-		   background-size: cover;
-		}
-		
-		h1 {
-		    font-weight: bold;
-		    margin: 0;
-		    color: beige;
-		}
-		
-		p {
-		    font-size: 14px;
-		    font-weight: bold;
-		    line-height: 20px;
-		    letter-spacing: 0.5px;
-		    margin: 20px 0 30px;
-		}
-		
-		span {
-		    font-size: 12px;
-		    color: beige;
-		}
-		
-		a {
-		    color: #fff;
-		    font-size: 14px;
-		    text-decoration: none;
-		    margin: 15px 0;
-		}
-		
-		.container {
-		    border-radius: 10px;
-		    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-		    position: absolute;
-		    overflow: hidden;
-		    width: 768px;
-		    max-width: 100%;
-		    min-height: 480px;
-		    opacity: 0.8;
-		}
-		
-		.form-container form {
-		    background: rgba(45, 52, 54, 1.0);
-		    display: flex;
-		    flex-direction: column;
-		    padding: 0 50px;
-		    height: 100%;
-		    justify-content: center;
-		    align-items: center;
-		    text-align: center;
-		}
-		
-		.social-container {
-		    margin: 20px 0;
-		}
-		
-		.social-container a {
-		    border: 1px solid #ddd;
-		    border-radius: 50%;
-		    display: inline-flex;
-		    justify-content: center;
-		    align-items: center;
-		    margin: 0 5px;
-		    height: 40px;
-		    width: 40px;
-		}
-		
-		
-		.form-container input {
-		    background: #eee;
-		    border: none;
-		    padding: 12px 15px;
-		    margin: 8px 0;
-		    width: 100%;
-		}
-		
-		button {
-		    border-radius: 20px;
-		    border: 1px solid #ff4b2b;
-		    background: #ff4b2b;
-		    color: #fff;
-		    font-size: 12px;
-		    font-weight: bold;
-		    padding: 12px 45px;
-		    letter-spacing: 1px;
-		    text-transform: uppercase;
-		    transition: transform 80ms ease-in;
-		}
-		
-		input[type=text] {
-		    width: 240px;
-		    text-align: center;
-		    background: transparent;
-		    border: none;
-		    border-bottom: 1px solid #fff;
-		    font-family: 'PLay', sans-serif;
-		    font-size: 16px;
-		    font-weight: 200px;
-		    padding: 10px 0;
-		    transition: border 0.5s;
-		    outline: none;
-		    color: #fff;
-		    font-weight: bold;
-		}
-		
-		input[type=password] {
-		    width: 240px;
-		    text-align: center;
-		    background: transparent;
-		    border: none;
-		    border-bottom: 1px solid #fff;
-		    font-family: 'PLay', sans-serif;
-		    font-size: 16px;
-		    font-weight: bold;
-		    padding: 10px 0;
-		    transition: border 0.5s;
-		    outline: none;
-		    color: #fff;
-		}
-		
-		input[type=email] {
-		    width: 240px;
-		    text-align: center;
-		    background: transparent;
-		    border: none;
-		    border-bottom: 1px solid #fff;
-		    font-family: 'PLay', sans-serif;
-		    font-size: 16px;
-		    font-weight: 200px;
-		    padding: 10px 0;
-		    transition: border 0.5s;
-		    outline: none;
-		    color: #fff;
-		    font-weight: bold;
-		}
-		
-		button:active {
-		    transform: scale(0.95);
-		}
-		
-		button:focus {
-		    outline: :none;
-		}
-		
-		button.ghost {
-		    background: transparent;
-		    border-color: #ff4b2b;
-		    background-color: #ff4b2b
-		}
-		
-		.form-container {
-		    position: absolute;
-		    top: 0;
-		    height: 100%;
-		    transition: all 0.6s ease-in-out;
-		}
-		
-		.sign-in-container {
-		    left: 0;
-		    width: 50%;
-		    z-index: 2;
-		}
-		
-		.sign-up-container {
-		    left: 0;
-		    width: 50%;
-		    z-index: 1;
-		    opacity: 0;
-		}
-		
-		.overlay-container {
-		    position: absolute;
-		    top: 0;
-		    left: 50%;
-		    width: 50%;
-		    height: 100%;
-		    overflow: hidden;
-		    transition: transform 0.6s ease-in-out;
-		    z-index: 100;
-		}
-		
-		.overlay {
-		    background: transparent;
-		    background: linear-gradient(to right, #ff4b2b, #ff416c) no repeat 0 0 /cover;
-		    color: #fff;
-		    position: absolute;
-		    left: -100%;
-		    height: 100%;
-		    width: 200%;
-		    transform: translateX(0);
-		    transition: transform 0.6s ease-in-out;
-		}
-		
-		.overlay-panel {
-		    position: absolute;
-		    top: 0;
-		    display: flex;
-		    flex-direction: column;
-		    justify-content: center;
-		    align-items: center;
-		    padding: 0 40px;
-		    height: 100%;
-		    width: 50%;
-		    text-align: center;
-		    transform: translateX(0);
-		    transition: transform 0.6s ease-in-out;
-		}
-		
-		.overlay-right {
-		    right: 0;
-		    transform: translateX(0);
-		}
-		
-		.overlay-left {
-		    transform: translateX(-20%);
-		}
-		
-		/*....Animation....*/
-		
-		/*....Move signin to the right....*/
-		.container.right-panel-active .sign-in-container {
-		    transform: translateX(100%);
-		}
-		
-		/*....Move overlay to the left....*/
-		.container.right-panel-active .overlay-container {
-		    transform: translateX(-100%);
-		}
-		
-		/*....Bring sign up over sign in....*/
-		.container.right-panel-active .sign-up-container {
-		    transform: translateX(100%);
-		    opacity: 1;
-		    z-index: 5;
-		}
-		
-		/*...Move overlay back to right....*/
-		.container.right-panel-active .overlay {
-		    transform: translateX(50%);
-		}
-		
-		.container.right-panel-active .overlay-left {
-		    transform: translateX(0);
-		}
-		
-		.container.right-panel-active .overlay-right {
-		    transform: translateX(20%);
-		}
-		
-	</style>

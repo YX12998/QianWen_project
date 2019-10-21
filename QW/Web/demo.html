@@ -2,172 +2,63 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/Web/bootstrap/css/bootstrap.css">
-		<style type="text/css">
-			body {
-				margin: 0;
-				padding: 0;
-				background: #F1F1F1;
-			}
-			.logo{
-				margin: 30px;
-			}
-			.login {
-				box-shadow: 2px 2px 2px gray;
-				background: #fff;
-				padding: 50px;
-			}
-			
-			.title{
-				display: flex;
-				justify-content: center;
-				/* margin-bottom: 40px; */
-			}
-			.title>a{
-				display: block;
-				font-size: 18px;
-				padding:10px 15px;
-				color: black;
-				text-align: center;
-				text-decoration: none;
-			}
-			.title>a:nth-of-type(1){
-				border-bottom: 2px solid #EA7864;
-			}
-			.title>a:nth-of-type(3):hover{
-				border-bottom: 2px solid #EA7864;
-			}
-			#form01{
-				margin-top: 40px;
-				display: flex;
-				justify-content: center;
-			}
-			#form01 input{
-				outline: none;
-				display: block;
-				width: 300px;
-				height: 50px;
-				margin: 0;
-				padding: 0;
-			}
-			#inpu01,#inpu02{
-				padding-left: 30px;
-				border: 1px solid #C8C8C8;
-				background: #F7F7F7;
-				border-radius: 5px;
-			}
-			.bt_denglu{
-				margin-top: 40px;
-			}
-			#loginBt{
-				border: 0;
-				background: #3194D0;
-				color: #fff;
-				height: 40px;
-				border-radius: 25px;
-				box-shadow: 1px 1px 1px royalblue;
-			}
-			#loginBt:hover{
-				background: #2386c3;
-			}
-			.name01, .mm{
-				position: relative;
-			}
-			.name01>span,.mm>span{
-				font-size: 18px;
-				color: #969696;
-				position: absolute;
-				margin: 14px;
-			}
-			@media(max-width: 800px) {
-				.logo{
-					display: none;
-				}
-				body{
-					background: #fff;
-				}
-				.login{
-					box-shadow: 0 0 0 #fff;
-				}
-			}
-		</style>
+		<title>签文-开始你的创作</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 	</head>
 	<body>
-		<div class="logo">
-			<a href="">
-				<img src="/Web/imgs/QW.png">
-			</a>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-0"></div>
-				<div class="col-md-4 col-sm-12 login">
-					<div class="title">
-						<a style="color: #EA7864; font-weight: 600;" href="">
-							登录
-						</a>
-						<a style="color: #969696;"> | </a>
-						<a id="registBt" style="color: #969696;" >
-							注册
-						</a>
-					</div>
-					<form id="form01" action="" method="">
-						<div>
-							<div class="name01">
-								<span class="glyphicon glyphicon-user"></span>
-								<input style="padding-left: 40px;" id="inpu01" type="text" placeholder="请输入用户名">
-							</div>
-							<div class="mm">
-								<span class="glyphicon glyphicon-lock"></span>
-								<input style="padding-left: 40px;" id="inpu02" type="password" placeholder="请输入密码">
-							</div>
-							<div class="bt_denglu">
-								<input id="loginBt" type="button" value="登录">
-							</div>
+		<!-- 导航 -->
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<meta charset="utf-8">
+				<title>Bootstrap 实例 - 导航栏中的按钮</title>
+				<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+				<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+				<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			</head>
+			<body>
+
+				<nav class="navbar navbar-inverse" role="navigation">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="#">菜鸟教程</a>
 						</div>
-						
-					</form>
-					<br>
-				</div>
-				<div class="col-md-4 col-sm-0"></div>
-			</div>
-		</div>
+						<div>
+							<form class="navbar-form navbar-right" role="search">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Search">
+								</div>
+								<button type="submit" class="btn btn-default">提交按钮</button>
+							</form>
+							<div class="container">
+								<ul class="nav navbar-nav just">
+									<li class="active"><a href="#">iOS</a></li>
+									<li><a href="#">SVN</a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											Java <b class="caret"></b>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="#">jmeter</a></li>
+											<li><a href="#">EJB</a></li>
+											<li><a href="#">Jasper Report</a></li>
+											<li class="divider"></li>
+											<li><a href="#">分离的链接</a></li>
+											<li class="divider"></li>
+											<li><a href="#">另一个分离的链接</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				</nav>
+
+			</body>
+		</html>
 	</body>
 </html>
-<script src="/Web/js/jquery-2.js"></script>
-<script src="/Web/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#loginBt").click(function() {
-
-			$.ajax({
-				url: '/login',
-				data: {
-					userName: $("#inpu01").val(),
-					userPassword: $("#inpu02").val(),
-				},
-				type: 'post',
-				dataType: 'json',
-				success: function(res) {
-					if (res.ok) {
-
-						window.location = "/Web/index.html";
-					} else {
-						alert("用户名或密码不正确");
-					}
-
-				},
-				error: function(a, b) {
-					console.info(a);
-				}
-			});
-		});
-
-		$("#registBt").click(function() {
-			// alert("22");
-			window.location.href = "/Web/demo2.html";
-		})
-	})
-</script>
+<script src="js/jquery-2.js" type="text/javascript" charset="utf-8"></script>
+<script src="bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>

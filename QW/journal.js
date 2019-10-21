@@ -65,11 +65,12 @@ app.get('/', function(req, res) {
 	var sess = req.session;
 	// 拦截 权限
 	if (!checeklogin.checeklogin(req)) {
-		res.sendFile(__dirname + "/Web/demo.html");
+		res.sendFile(__dirname + "/Web/login.html");
 	} else {
-		res.setHeader('Content-Type', 'text/html;charset=utf-8');
-		res.write('<p>欢迎您:' + sess.userName + '已经登录' + '</p>')
-		res.end();
+		// res.setHeader('Content-Type', 'text/html;charset=utf-8');
+		// res.write('<p>欢迎您:' + sess.userName + '已经登录' + '</p>');
+		// res.end();
+		res.sendFile(__dirname + "/Web/login.html");
 	}
 
 })
