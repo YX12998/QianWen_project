@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title>签文-开始你的创作</title>
@@ -7,58 +8,231 @@
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 	</head>
 	<body>
-		<!-- 导航 -->
-		<!DOCTYPE html>
-		<html>
-			<head>
-				<meta charset="utf-8">
-				<title>Bootstrap 实例 - 导航栏中的按钮</title>
-				<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-				<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-				<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-			</head>
-			<body>
-
-				<nav class="navbar navbar-inverse" role="navigation">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<a class="navbar-brand" href="#">菜鸟教程</a>
-						</div>
-						<div>
-							<form class="navbar-form navbar-right" role="search">
-								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Search">
-								</div>
-								<button type="submit" class="btn btn-default">提交按钮</button>
-							</form>
-							<div class="container">
-								<ul class="nav navbar-nav just">
-									<li class="active"><a href="#">iOS</a></li>
-									<li><a href="#">SVN</a></li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											Java <b class="caret"></b>
-										</a>
-										<ul class="dropdown-menu">
-											<li><a href="#">jmeter</a></li>
-											<li><a href="#">EJB</a></li>
-											<li><a href="#">Jasper Report</a></li>
-											<li class="divider"></li>
-											<li><a href="#">分离的链接</a></li>
-											<li class="divider"></li>
-											<li><a href="#">另一个分离的链接</a></li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-							
-						</div>
+		<!--导航-->
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid" style="font-size: 16px;">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+            			<span class="sr-only">切换导航</span>
+           			 	<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+        			</button>
+					<a href="#">
+						<img src="imgs/QW.png" height="48px" alt="" />
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="example-navbar-collapse">
+					<div class="nav navbar-right" style="color: #EA7864;line-height: 48px;">
+						欢迎：<b id="text">user1</b>&nbsp;
+						<button type="button" id="logoutBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">登出</button>
+						<button type="button" id="VipBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">注册ViP</button>
 					</div>
-				</nav>
+					<form class="navbar-form navbar-right" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="搜索">
+						</div>
+						<button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
+					</form>
+					
+					<div class="container">
+						<ul class="nav navbar-nav just">
+							<li class="active">
+								<a href="#"><span style="padding-right: 6px;" class="glyphicon glyphicon-home"></span>首页</a>
+							</li>
+							<li>
+								<a href="#"><span style="padding-right: 6px;" class="glyphicon glyphicon-pencil"></span>写文章</a>
+							</li>
+							<li>
+								<a href="#"><span style="padding-right: 6px;" class="	glyphicon glyphicon-tags"></span>个人主页</a>
+							</li>
+						</ul>
+					</div>
 
-			</body>
-		</html>
+				</div>
+			</div>
+		</nav>
+		<!--内容-->
+		<div class="container">
+			<h1 style="color: #2C3E50; font-family: '楷体';">发现文章</h1>
+			<hr>
+			<br>
+			<div class="row">
+				<div class="col-sm-3 col-sm-offset-6">
+					<p style="text-align:center; font-family: '楷体'; font-size: 18px;">vip点击可查看所有日志(含私密)</p>
+				</div>
+				<div class="col-sm-3">
+					<button class="btn btn-info" type="button" id="vip">VIP通道</button>
+				</div>
+			</div>
+			<br>
+			<br>
+			
+			<div class="hotArticle">
+				<table class="table table-striped" style="font-family: '楷体'; font-size: 20px;">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>标题</th>
+							<th>作者</th>
+							<th>点赞数</th>
+							<th>状态</th>
+							<th>查看</th>
+						</tr>
+					</thead>
+					<tbody id="list">
+						<!-- <tr>
+							<th scope="row">1</th>
+							<td>title</td>
+							<td>hot</td>
+							<td>examine</td>
+						</tr> -->
+						<!-- 	<tr>
+							<th scope="row">' + result[i].articleId + '</th>
+							<td>' + result[i].title + '</td>
+							<td>' + result[i].author +'</td>
+							<td>' + result[i].good + '</td>
+							<td>' + result[i].private1 '</td>
+							<td>' + '<button class="btn btn-success examine">' + '查看' + '</button>' + '</td>
+						</tr>' -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+
 	</body>
+
 </html>
 <script src="js/jquery-2.js" type="text/javascript" charset="utf-8"></script>
 <script src="bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			async: false,
+			cache: false,
+			url: '/checkelogin',
+			type: 'get',
+			data: {},
+			dataType: 'json',
+			success: function(res) {
+				if (res.ok) {
+					console.info("ok")
+					console.info(res);
+				} else {
+					console.info('no ok');
+					var toHome = window.confirm("您未登录,点击确认登录或点击注销,返回主页");
+
+					if (toHome) {
+						window.location = "/Web/login.html";
+					} else {
+						window.location = "http://hao123.com";
+					}
+
+				}
+			},
+			error: function(a, b) { // a 报错的类型 b 报错的信息 
+				console.info(a);
+			}
+		});
+
+		//  增加数据库内容到页面上
+		$.ajax({
+			url: "/journal",
+			type: 'get',
+			dataType: 'json',
+			success: function(res) {
+				$("#list").append(res); // 把后台数据返回页面
+			},
+			error: function(a, b) {
+				alert("error");
+			}
+		});
+		// 获取用户名
+		$.ajax({
+			url: "/username",
+			type: 'get',
+			dataType: 'json',
+			success: function(res) {
+				$("#text").text(res);
+			},
+			error: function(a, b) {
+				alert("error");
+			}
+		});
+	});
+
+
+	// 判断vip 
+	$("#vip").click(function() {
+		$.ajax({
+			url: "/pdVip",
+			type: 'get',
+			dataType: 'json',
+			success: function(res) {
+				if (res.ok) {
+					window.location = "/Web/vip.html";	
+				} else {
+					alert("你未注册vip");
+					window.location = "/Web/buyVip.html";
+				} 
+
+			},
+			error: function(a, b) {
+				alert(404);
+			}
+		});
+
+	})
+	// 退出
+	$(function() {
+		$("#logoutBt").click(function() {
+			$.ajax({
+				url: "/logout",
+				type: 'post',
+				dataType: 'json',
+				success: function(res) {
+					window.location = '/';
+				},
+				error: function(a, b) {
+					$("#close").attr("data-toggle", "modal");
+					$("#close").attr("data-target", "#myModal");
+					$("#close").click();
+					$("#close").removeAttr("data-toggle");
+					$("#close").removeAttr("data-target");
+				}
+			})
+		});
+	});
+
+	//点击注册跳转到注册页面
+	$("#VipBt").click(function() {
+		
+		window.location = "/Web/buyVip.html";
+	})
+
+	// 点击查看跳转
+	$("tbody").delegate(".examine", "click", function() {
+		window.location = "see.html";
+	});
+	$("#list").delegate("button", "click", function() {
+		alert("传递id成功");
+		(this.parentElement.parentElement).remove();
+		console.info((this.parentElement.parentElement));
+		var id = (this.parentElement.parentElement).children[0].innerText;
+		$.ajax({
+			url: "/seeing",
+			type: 'post',
+			data: {
+				id: id
+			},
+			dataType: 'json',
+			success: function(res) {
+				// window.location = "/Web/see.html";
+				// $("#ati").append(res); // 把后台数据返回页面
+			},
+			error: function(a, b) {
+				alert("error");
+			}
+		});
+	});
+</script>
