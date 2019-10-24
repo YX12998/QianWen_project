@@ -1,37 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
-		<title>首页</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="/Web/bootstrap/css/bootstrap.css">
-		<script type="text/javascript" src="/Web/js/jquery-2.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<meta charset="utf-8">
+		<title>签文-开始你的创作</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 	</head>
 	<body>
-		<div class="container" style="width: 100%;">
-			<div class="navbar row">
-				<div class="col-lg-2 col-sm-3 col-xs-2 home ">
-					<li><a href="index.html">首页</a></li>
+		<!--导航-->
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid" style="font-size: 16px;">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+            			<span class="sr-only">切换导航</span>
+           			 	<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+        			</button>
+					<a href="#">
+						<img src="imgs/QW.png" height="48px" alt="" />
+					</a>
 				</div>
-				<div class="col-lg-3 col-sm-3 col-xs-3 personHome ">
-					<li><a href="/Web/personal_pages.html">个人主页</a></li>
-				</div>
-				<div class="col-lg-2 col-sm-3 col-xs-3 writeArticle ">
-					<li><a href="/Web/add.html">写日志</a></li>
-				</div>
-				<div class="col-lg-4 col-sm-2 col-xs-4 info">
-					<span style="color: white;font-family: '楷体';font-size: 12px;">
-						欢迎:
-						<b id="text"></b>
-					</span>
-					&nbsp;
-					<button type="button" id="logoutBt" class="btn btn-danger" style="border-radius: 50px;font-family: '楷体';opacity: 0.9;">登出</button>
-					<button type="button" id="VipBt" class="btn btn-danger" style="border-radius: 50px;font-family: '楷体';opacity: 0.9;">注册ViP</button>
+				<div class="collapse navbar-collapse" id="example-navbar-collapse">
+					<div class="nav navbar-right" style="color: #EA7864;line-height: 48px;">
+						欢迎：<b id="text"></b>&nbsp;
+						<button type="button" id="logoutBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">登出</button>
+						<button type="button" id="VipBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">注册ViP</button>
+					</div>
+					<form class="navbar-form navbar-right" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="搜索">
+						</div>
+						<button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
+					</form>
+					
+					<div class="container">
+						<ul class="nav navbar-nav just">
+							<li class="active">
+								<a href="index.html"><span style="padding-right: 6px;" class="glyphicon glyphicon-home"></span>首页</a>
+							</li>
+							<li>
+								<a href="add.html"><span style="padding-right: 6px;" class="glyphicon glyphicon-pencil"></span>写文章</a>
+							</li>
+							<li>
+								<a href="personal_pages.html"><span style="padding-right: 6px;" class="	glyphicon glyphicon-tags"></span>个人主页</a>
+							</li>
+						</ul>
+					</div>
 
 				</div>
 			</div>
-		</div>
-
+		</nav>
+		<!--内容-->
 		<div class="container">
 			<h1 style="color: #2C3E50; font-family: '楷体';">发现文章</h1>
 			<hr>
@@ -79,30 +100,11 @@
 			</div>
 		</div>
 
-		<!-- 模态框 -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header" style="color: white; font-family: '楷体';background-color: #2C3E50;">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">错误提示</h4>
-					</div>
-					<div class="modal-body" style="color: #2C3E50;font-family: '楷体';">
-						未成功退出
-					</div>
-					<div class="modal-footer">
-						<button type="button" id="close" class="btn btn-danger" data-dismiss="modal" style="border-radius: 50px;font-family: '楷体';opacity: 0.9;"
-						 data-toggle="" data-target="">关闭</button>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<!-- <div>vip点击可查看所有日志(含私密)<button type="button" id="vip">VIP通道</button></div> -->
-
 	</body>
+
 </html>
-<script src="bootstrap/js/bootstrap.js"></script>
+<script src="js/jquery-2.js" type="text/javascript" charset="utf-8"></script>
+<script src="bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function() {
 		$.ajax({
