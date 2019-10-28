@@ -1,79 +1,107 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<title>查看文章</title>
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
 		<style type="text/css">
-			body {
-				background: url(imgs/9.png) no-repeat;
-				background-size: 100%;
+			#cs,#csList{
+				width: 100%;
+			}
+			#cs th,#cs td{
+				overflow: hidden;
+				display: inline-block;
+				width: 20%;
+				height: 60px;
+			}
+			#csList th,#csList td{
+				overflow-x: hidden;
+				display: inline-block;
+				width: 20%;
+				height: 60px;
 			}
 			.xxx {
 				margin-top: 5%;
 			}
-
+			
 			#commentList {
+				margin: 0 auto;
+				border-radius: 10px;
+				width: 72%;
 				border: none;
 			}
-
+			
 			#commentUserName {
 				text-align: left;
 			}
-
+			
 			#userComment {
 				text-align: center;
 			}
-
+			
 			#commentTime {
 				text-align: right;
 			}
 		</style>
 	</head>
-	<body>
-		<!-- 导航栏. -->
-		<div class="container" style="width: 100%;">
-			<div class="navbar row">
-				<div class="col-lg-2 col-sm-3 col-xs-2 home ">
-					<li><a href="index.html">首页</a></li>
+
+	<body style="background: url(imgs/body.png);">
+		<!--导航-->
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid" style="font-size: 16px;">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+            			<span class="sr-only">切换导航</span>
+           			 	<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+        			</button>
+					<a href="index.html">
+						<img src="imgs/QW.png" height="48px" alt="" />
+					</a>
 				</div>
-				<div class="col-lg-3 col-sm-3 col-xs-3 personHome ">
-					<li><a href="personal_pages.html">个人主页</a></li>
-				</div>
-				<div class="col-lg-2 col-sm-3 col-xs-3 writeArticle ">
-					<li><a href="add.html">写日志</a></li>
-				</div>
-				<div class="col-lg-4 col-sm-2 col-xs-4 info">
-					<span style="color: white;font-family: '楷体';font-size: 12px;">
-						欢迎:
-						<b id="text"></b>
-					</span>
-					<button id="logoutBt" class="btn btn-danger" style="border-radius: 50px;font-family: '楷体';opacity: 0.9;">退出</button>
+				<div class="collapse navbar-collapse" id="example-navbar-collapse">
+					<div class="nav navbar-right" style="color: #EA7864;line-height: 48px;">
+						欢迎：<b id="text"></b>&nbsp;
+						<button type="button" id="logoutBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">登出</button>
+						<button type="button" id="VipBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">注册ViP</button>
+					</div>
+
+					<div class="container">
+						<ul class="nav navbar-nav just">
+							<li class="active">
+								<a href="index.html"><span style="padding-right: 6px;" class="glyphicon glyphicon-home"></span>首页</a>
+							</li>
+							<li>
+								<a href="add.html"><span style="padding-right: 6px;" class="glyphicon glyphicon-pencil"></span>写文章</a>
+							</li>
+							<li>
+								<a href="personal_pages.html"><span style="padding-right: 6px;" class="	glyphicon glyphicon-tags"></span>个人主页</a>
+							</li>
+						</ul>
+					</div>
+
 				</div>
 			</div>
-		</div>
+		</nav>
 
-		<div class="container">
-			<h1 class="col-xs-offset-1" style="color: #2C3E50; font-family: '楷体';">查看文章</h1>
-			
-		<!-- 	<h3>用户id:<p id="userId"></p>
-			</h3>
-			<h3>文章id<p id="journalId"></p>
-			</h3> -->
-		</div>
-		<hr >
 		<!-- 主体 -->
-		<div class="container content">
+		<div class="container content" style="background: ghostwhite; border-radius: 20px;box-shadow: 0 0 5px grey;">
+			<h1 class="col-xs-offset-1" style="color: #2C3E50; font-family: '楷体';">查看文章</h1>
+			<hr />
 			<div class="row">
 				<div class="col-md-3 col-md-offset-1">
 					<p style="text-align:center; font-family: '楷体'; font-size: 23px;" id="title">标题:</p>
 				</div>
-				<div class="col-md-3">
-					<p style="text-align:center; font-family: '楷体'; font-size: 23px;" id="userId">用户id:</p>
+				<div class="col-md-3" style="font-family: '楷体'; font-size: 23px;">
+					用户id:
+					<p style="text-align:center; font-family: '楷体'; font-size: 23px; display: inline-block;" id="userId"></p>
 				</div>
-				<div class="col-md-3">
-					<p style="text-align:center; font-family: '楷体'; font-size: 23px;" id="journalId">文章编码:</p>
+				<div class="col-md-3" style="font-family: '楷体'; font-size: 23px;">
+					文章编码:
+					<p style="text-align:center; font-family: '楷体'; font-size: 23px; display: inline-block;" id="journalId"></p>
 				</div>
 				<div class="row xxx">
 					<div class="col-md-3 col-md-push-2">
@@ -83,7 +111,7 @@
 						<p style="font-family: '楷体'; font-size: 23px;" id="classify">文章类型:</p>
 					</div>
 					<div class="col-md-3 ">
-						<p id="good" style="font-family: '楷体'; font-size: 23px;">点赞数:</p>
+						<p id="good" style="font-family: '楷体'; font-size: 23px;">点赞数: </p>
 					</div>
 					<div class="col-md-1 col-md-pull-1">
 						<button type="button" class="btn btn-default spot" style="color: #5CB85C; font-size: 16px;" id="fans">点赞
@@ -122,12 +150,12 @@
 		<!-- 显示评论 -->
 		<div class="bs-example" data-example-id="contextual-panels">
 			<div class="row">
-				<div class="col-sm-12 col-lg-offset-3">
+				<div class="col-sm-12 col-lg-offset-2">
 					<label id="" style="font-family: '楷体'; font-size: 23px;">所有评论:</label><br>
 				</div>
 			</div>
 
-			<div class="panel panel-primary col-lg-6 col-lg-offset-3" id="commentList">
+			<div class="panel panel-primary" id="commentList">
 				<!-- <div class="panel-heading">
 					<h3 class="panel-title" id="commentUserName">用户名</h3>
 				</div>
@@ -138,13 +166,13 @@
 					时间
 				</div> -->
 				<table class="table table-striped" style="font-family: '楷体';">
-					<thead>
+					<thead id="cs">
 						<tr>
-							<th>当前评论id</th>
-							<th>当前评论人id</th>
-							<th>内容</th>
-							<th>时间</th>
-							<th>查看</th>
+							<td>当前评论id</td>
+							<td>当前评论人id</td>
+							<td>内容</td>
+							<td>时间</td>
+							<td>查看</td>
 						</tr>
 					</thead>
 					<tbody id="csList">
@@ -157,23 +185,24 @@
 				</table>
 			</div>
 		</div>
-
-
-
+		<br />
 	</body>
+
 </html>
 <script src="js/jquery-2.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
 
 <script type="text/javascript">
 	$(function() {
-		// 点赞 变红
 		$("#fans").click(function() {
 			$(this).css("color", "red");
 			$.ajax({
 				url: '/DZ',
-				type: 'get',
-				data: {},
+				type: 'post',
+				data: {
+					userId: $('#userId').html(),
+					journalId: $('#journalId').html()
+				},
 				dataType: 'json',
 				success: function(res) {
 					alert(res);
@@ -185,6 +214,24 @@
 			});
 
 		});
+		// 点赞 变红
+		//		$("#fans").click(function() {
+		//			$(this).css("color", "red");
+		//			$.ajax({
+		//				url: '/DZ',
+		//				type: 'get',
+		//				data: {},
+		//				dataType: 'json',
+		//				success: function(res) {
+		//					alert(res);
+		//					window.location = './see.html';
+		//				},
+		//				error: function(a, b) {
+		//					console.info(a);
+		//				}
+		//			});
+		//
+		//		});
 
 		// 获取用户名
 		$.ajax({
@@ -220,7 +267,6 @@
 			})
 		});
 	});
-
 
 	// 返回用户id
 	$.ajax({
@@ -258,7 +304,7 @@
 	// 新增评论
 	$(function() {
 		$("#subm").click(function() {
-			
+
 			$.ajax({
 				url: '/subComment',
 				data: {
@@ -300,21 +346,20 @@
 		window.location = "/Web/csList.html";
 	});
 
-
 	// // 点击查看评论信息传递ID 
 	$("tbody").delegate(".examine", "click", function() {
 		// alert(23);
 		// var commentId = (this.parentElement.parentElement).children[0].innerText;
 		console.info((this.parentElement.parentElement).children);
-		
+
 		$.ajax({
 			url: "/postCommentId",
 			type: 'post',
 			data: {
-				CommentId:(this.parentElement.parentElement).children[0].innerText,
+				CommentId: (this.parentElement.parentElement).children[0].innerText,
 				// journalId:(this.parentElement.parentElement).children[0].innerText,
 			},
-			dataType:'json',
+			dataType: 'json',
 			success: function(res) {
 				console.info(res);
 			},
@@ -323,28 +368,4 @@
 			}
 		})
 	});
-
-
-	//   // 点击查看评论信息 
-	// $("#cslist").delegate("button", "click", function() {
-	// 	alert("传递id成功");
-	// 	// (this.parentElement.parentElement).remove();
-	// 	var id = (this.parentElement.parentElement).children[0].innerText;
-	// 	console.info(id);
-	// 	$.ajax({
-	// 		url: "/queryComment",
-	// 		type: 'get',
-	// 		data: {
-	// 			id: id
-	// 		},
-	// 		dataType: 'json',
-	// 		success: function(res) {
-	// 			// window.location = "/Web/see.html";
-	// 			// $("#ati").append(res); // 把后台数据返回页面
-	// 		},
-	// 		error: function(a, b) {
-	// 			alert("error");
-	// 		}
-	// 	});
-	// });
 </script>

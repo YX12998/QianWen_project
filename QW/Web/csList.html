@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
 		<style type="text/css">
 			body {
 				background: url(imgs/10.png)repeat;
@@ -13,26 +13,42 @@
 		<title></title>
 	</head>
 	<body>
-		<div class="container" style="width: 100%;">
-			<div class="navbar row">
-				<div class="col-lg-2 col-sm-3 col-xs-2 home ">
-					<li><a href="index.html">首页</a></li>
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid" style="font-size: 16px;">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+            			<span class="sr-only">切换导航</span>
+           			 	<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+        			</button>
+					<a href="index.html">
+						<img src="imgs/QW.png" height="48px" alt="" />
+					</a>
 				</div>
-				<div class="col-lg-3 col-sm-3 col-xs-3 personHome ">
-					<li><a href="personal_pages.html">个人主页</a></li>
-				</div>
-				<div class="col-lg-2 col-sm-3 col-xs-3 writeArticle ">
-					<li><a href="add.html">写日志</a></li>
-				</div>
-				<div class="col-lg-4 col-sm-2 col-xs-4 info">
-					<span style="color: white;font-family: '楷体';font-size: 12px;">
-						欢迎:
-						<b id="text"></b>
-					</span>
-					<button id="logoutBt" class="btn btn-danger" style="border-radius: 50px;font-family: '楷体';opacity: 0.9;">退出</button>
+				<div class="collapse navbar-collapse" id="example-navbar-collapse">
+					<div class="nav navbar-right" style="color: #EA7864;line-height: 48px;">
+						欢迎：<b id="text"></b>&nbsp;
+						<button type="button" id="logoutBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">登出</button>
+					</div>
+					
+					<div class="container">
+						<ul class="nav navbar-nav just">
+							<li class="active">
+								<a href="index.html"><span style="padding-right: 6px;" class="glyphicon glyphicon-home"></span>首页</a>
+							</li>
+							<li>
+								<a href="add.html"><span style="padding-right: 6px;" class="glyphicon glyphicon-pencil"></span>写文章</a>
+							</li>
+							<li>
+								<a href="personal_pages.html"><span style="padding-right: 6px;" class="	glyphicon glyphicon-tags"></span>个人主页</a>
+							</li>
+						</ul>
+					</div>
+
 				</div>
 			</div>
-		</div>
+		</nav>
 		<div class="container">
 
 			<div class="row">

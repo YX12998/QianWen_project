@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
 	</head>
-	<body>
+	<body style="background: url(imgs/body.png);">
 		<!--导航-->
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="container-fluid" style="font-size: 16px;">
@@ -16,7 +16,7 @@
             			<span class="icon-bar"></span>
             			<span class="icon-bar"></span>
         			</button>
-					<a href="#">
+					<a href="index.html">
 						<img src="imgs/QW.png" height="48px" alt="" />
 					</a>
 				</div>
@@ -26,12 +26,6 @@
 						<button type="button" id="logoutBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">登出</button>
 						<button type="button" id="VipBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">注册ViP</button>
 					</div>
-					<form class="navbar-form navbar-right" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="搜索">
-						</div>
-						<button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
-					</form>
 					
 					<div class="container">
 						<ul class="nav navbar-nav just">
@@ -54,8 +48,9 @@
 
 		<!-- 内容框 -->
 		<div>
-			<div class="container nav">
-				<h1 style="color: #2C3E50; font-family: '楷体';">我的主页</h1>
+			<div class="container" style="background: #FAF9ED;">
+			<div style="background: url(imgs/bg_left.png); width: 100%;height: 33px;"></div>
+			<h1 style="color: #2C3E50; font-family: '楷体';">发现文章</h1>
 				<hr >
 				<div class="row">
 					<div class="col-md-12">
@@ -107,6 +102,7 @@
 				</div>
 			</div>
 		</div>
+		<br />
 	</body>
 </html>
 <script src="js/jquery-2.js"></script>
@@ -163,6 +159,10 @@
 			}
 		});
 	});
+	//点击注册跳转到注册页面
+	$("#VipBt").click(function() {
+		window.location = "/Web/buyVip.html";
+	})
 
     // 返回未来元素样式
 	$.ajax({
@@ -192,7 +192,6 @@
 
 	// 点击查看文章详情把文章id传到后台
 	$("#list").delegate("button", "click", function() {
-		alert("传递id成功");
 		(this.parentElement.parentElement).remove();
 		var id = (this.parentElement.parentElement).children[0].innerText;
 		$.ajax({

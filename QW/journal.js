@@ -7,7 +7,6 @@ var mysql = require("mysql");
 var app = express()
 app.use(cookieParser())
 
-
 // 引入登录校验
 var checeklogin = require('./logincheck');
 
@@ -47,7 +46,7 @@ app.use(session(sessionOpts));
 // 前端校验  // 监听一个请求,将校验的结果返回给前端
 app.get('/checkelogin', function(req, res) {
 	console.log(checeklogin.checeklogin(req));
-	if (checeklogin.checeklogin(req)) {
+	if(checeklogin.checeklogin(req)) {
 		res.json({
 			"ok": true
 		});
@@ -58,13 +57,12 @@ app.get('/checkelogin', function(req, res) {
 	}
 })
 
-
 // 修改成权限页面
 app.get('/', function(req, res) {
 	// 验证登录状态
 	var sess = req.session;
 	// 拦截 权限
-	if (!checeklogin.checeklogin(req)) {
+	if(!checeklogin.checeklogin(req)) {
 		res.sendFile(__dirname + "/Web/login.html");
 	} else {
 		// res.setHeader('Content-Type', 'text/html;charset=utf-8');
@@ -80,13 +78,42 @@ app.get("/journal", function(req, res) {
 	// 查询数据库
 	var sqlString = 'select * from journal';
 	connection.query(sqlString, function(err, result, file) {
-		if (err) {
+		if(err) {
 			res.json("未找到");
 		} else {
 			var a = [];
-			for (var i = 0; i < result.length; i++) {
-				if (result[i].private1 == 'false') {
-					if (result[i].private1 == 'false') {
+			for(var i = 0; i < result.length; i++) {
+				if(result[i].private1 == 'false') {
+					if(result[i].private1 == 'false') {
+						result[i].private1 = '公开';
+					} else {
+						result[i].private1 = '私密';
+					}
+					a[i] = '<tr><th scope="row">' + result[i].articleId + '</th><td>' + result[i].title + '</td><td>' + result[i].author +
+						'</td><td>' + result[i].good + '</td><td>' + result[i].private1 +
+						'</td><td>' + '<button class="btn btn-success examine">' + '查看' + '</button>' + '</td></tr>'
+				}
+
+			}
+			res.json(a);
+		};
+	})
+	// res.json({});
+})
+
+// 搜索
+app.post("/search", function(req, res) {
+	var jouName = req.body.jouName;
+	// 查询数据库
+	var sqlString = 'select * from journal where title like "%' + jouName + '%"';
+	connection.query(sqlString, function(err, result, file) {
+		if(err) {
+			res.json("未找到");
+		} else {
+			var a = [];
+			for(var i = 0; i < result.length; i++) {
+				if(result[i].private1 == 'false') {
+					if(result[i].private1 == 'false') {
 						result[i].private1 = '公开';
 					} else {
 						result[i].private1 = '私密';
@@ -107,7 +134,7 @@ app.get("/journal", function(req, res) {
 app.get("/pdVip", function(req, res) {
 	var sqlString = 'select * from vip where userName="' + username + '"';
 	connection.query(sqlString, function(err, result, file) {
-		if (err) {
+		if(err) {
 			throw err;
 			console.info(err);
 			// res.json({
@@ -115,7 +142,7 @@ app.get("/pdVip", function(req, res) {
 			// })
 		} else {
 			console.info(result);
-			if (result.length > 0) {
+			if(result.length > 0) {
 				res.json({
 					"ok": true
 				})
@@ -133,12 +160,12 @@ app.get("/vip", function(req, res) {
 	// 查询数据库
 	var sqlString = 'select * from journal';
 	connection.query(sqlString, function(err, result, file) {
-		if (err) {
+		if(err) {
 			res.json("未找到");
 		} else {
 			var a = [];
-			for (var i = 0; i < result.length; i++) {
-				if (result[i].private1 == 'false') {
+			for(var i = 0; i < result.length; i++) {
+				if(result[i].private1 == 'false') {
 					result[i].private1 = '公开';
 				} else {
 					result[i].private1 = '私密';
@@ -153,24 +180,22 @@ app.get("/vip", function(req, res) {
 	})
 })
 
-
-
 // 个人获得日志信息
 app.get("/journal2", function(req, res) {
 	// 查询数据库
 	var sqlString = 'select * from journal';
 	connection.query(sqlString, function(err, result, file) {
-		if (err) {
+		if(err) {
 			res.json("未找到");
 		} else {
 			var a = [];
-			for (var i = 0; i < result.length; i++) {
-				if (result[i].private1 == 'false') {
+			for(var i = 0; i < result.length; i++) {
+				if(result[i].private1 == 'false') {
 					result[i].private1 = '公开';
 				} else {
 					result[i].private1 = '私密';
 				}
-				if (result[i].author == username) {
+				if(result[i].author == username) {
 					a[i] = "<tr><td class='y'>" + result[i].articleId + '</td><td>' + result[i].author + '</td><td>' + result[i].private1 +
 						'</td><td>' + result[i].title + '<td><button class="btn btn-success examine">' + '查看' + '</button>&nbsp;' +
 						'<button class="btn btn-info updata">' + '编辑' + '</button>&nbsp;' +
@@ -187,13 +212,13 @@ app.get("/journal2", function(req, res) {
 app.post('/deleteArticle', function(req, res) {
 	number = req.body.articleId;
 	connection.query('delete from journal where articleId=' + number, function(err, result) {
-		if (err) {
+		if(err) {
 			res.json({
 				"ok": false,
 				"info": "此文章不存在"
 			});
 		} else {
-			if (result.affectedRows > 0) {
+			if(result.affectedRows > 0) {
 				res.json({
 					"ok": true,
 					"info": "删除成功"
@@ -208,18 +233,17 @@ app.post('/deleteArticle', function(req, res) {
 	});
 });
 
-
 // 储存点击查看文章按钮时从前台传过来的文章id
 app.post("/seeing", function(req, res) {
 	articleid = req.body.id;
 	// 查询数据库
 	var sqlString = 'select * from journal';
 	connection.query(sqlString, function(err, result, file) {
-		if (err) {
+		if(err) {
 			res.json("未找到");
 		} else {
-			for (var i = 0; i < result.length; i++) {
-				if (result[i].articleId == articleid) {
+			for(var i = 0; i < result.length; i++) {
+				if(result[i].articleId == articleid) {
 					console.info("------");
 					res.json(result[i].article);
 					// res.jaon(articleid) // 把文章id
@@ -237,11 +261,11 @@ app.get("/see", function(req, res) {
 	var sqlString = 'select * from journal';
 	connection.query(sqlString, function(err, result, file) {
 		console.info(result);
-		if (err) {
+		if(err) {
 			res.json("未找到");
 		} else {
-			for (var i = 0; i < result.length; i++) {
-				if (result[i].articleId == articleid) {
+			for(var i = 0; i < result.length; i++) {
+				if(result[i].articleId == articleid) {
 					res.json(result[i]);
 				}
 
@@ -253,7 +277,7 @@ app.get("/see", function(req, res) {
 
 // // 新增评论
 app.post("/subComment", function(req, res) {
-	
+
 	console.log(req.body);
 	var add = 'insert into comment(userName,title,userId,journalId,comments,times) values("' + req.body.userName + '","' +
 		req.body.title + '","' + req.body.userId + '","' + articleid + '","' + req.body.comments + '","' + req.body
@@ -261,7 +285,7 @@ app.post("/subComment", function(req, res) {
 	console.info(add);
 	connection.query(add,
 		function(error, results, fields) {
-			if (error) {
+			if(error) {
 				res.json({
 					"ok": false
 				});
@@ -277,19 +301,18 @@ app.post("/subComment", function(req, res) {
 app.get("/showComments", function(req, res) {
 	console.info("进入显示评论");
 	// 查询数据库
-	
 
-	var sqlString = 'select * from comment where journalId='+articleid;
+	var sqlString = 'select * from comment where journalId=' + articleid;
 	connection.query(sqlString, function(err, result, file) {
-		if (err) {
+		if(err) {
 			res.json("未找到");
 		} else {
-			
-			var a = [];
-			for (var i = 0; i < result.length; i++) {
 
-				a[i] = '<tr><th>' + result[i].Id + '</th><th>' + result[i].userName + '</th><th scope="row">' + result[i].comments +
-					'</th><td>' + result[i].times +
+			var a = [];
+			for(var i = 0; i < result.length; i++) {
+
+				a[i] = '<tr><td>' + result[i].Id + '</td><td>' + result[i].userName + '</td><td scope="row">' + result[i].comments +
+					'</td><td>' + result[i].times +
 					'</td><td><button class="btn btn-success examine">' + '查看' + '</button></td></tr>';
 
 			}
@@ -308,7 +331,7 @@ app.get("/queryComment", function(req, res) {
 	var sqlString = 'select * from comment where Id=' + CommentId;
 	console.info(sqlString);
 	connection.query(sqlString, function(err, result) {
-		if (err) {
+		if(err) {
 			res.json("未找到");
 		} else {
 			console.info(result);
@@ -326,11 +349,11 @@ app.post("/login", function(req, res) {
 		'" limit 1';
 	connection.query(sqlString, function(err, result) {
 
-		if (err) {
+		if(err) {
 			res.json({
 				"ok": false
 			});
-		} else if (result <= 0) {
+		} else if(result <= 0) {
 			res.json({
 				"ok": false
 			});
@@ -351,7 +374,7 @@ app.post("/login", function(req, res) {
 
 // 返回登录用户名
 app.get("/username", function(req, res) {
-	if (username) {
+	if(username) {
 		res.json(username);
 	} else {
 		res.json("未登录");
@@ -361,7 +384,7 @@ app.get("/username", function(req, res) {
 // 返回登录id
 app.get("/userId", function(req, res) {
 	console.info(userId);
-	if (userId) {
+	if(userId) {
 		res.json(userId);
 	} else {
 		res.json("未登录");
@@ -378,24 +401,23 @@ app.post('/logout', function(req, res) {
 	})
 })
 
-
 // 注册用户并容错
 app.post('/regist', function(req, res) {
 	var repeatUserName = null;
 	connection.query('select * from user where userName="' + req.body.userName + '";', function(error, results, fields) {
-		if (results.length > 0) {
+		if(results.length > 0) {
 			repeatUserName = results[0].userName;
 			console.info(results[0].userName);
 		} else {
 			console.info("成功输入")
 		}
-		if (req.body.userName == false) {
+		if(req.body.userName == false) {
 
 			console.info("请输入账号");
 			res.json({
 				"w": true
 			});
-		} else if (req.body.userPassword == false) {
+		} else if(req.body.userPassword == false) {
 			res.json({
 				"q": true
 			});
@@ -405,11 +427,11 @@ app.post('/regist', function(req, res) {
 				req.body.userPassword + '"' + ')';
 			connection.query(queryCom1,
 				function(error, results, fields) {
-					if (repeatUserName == req.body.userName) {
+					if(repeatUserName == req.body.userName) {
 						res.json({
 							"y": true
 						});
-					} else if (error) {
+					} else if(error) {
 						console.log('失败')
 						res.json({
 							"ok": false
@@ -436,7 +458,7 @@ app.post("/addArticle", function(req, res) {
 		req.body.private1 + '")';
 	connection.query(q,
 		function(error, results, fields) {
-			if (error) {
+			if(error) {
 				res.json({
 					"ok": false
 				});
@@ -449,26 +471,16 @@ app.post("/addArticle", function(req, res) {
 });
 
 //点赞
-
-app.get('/DZ', function(req, res) {
-	connection.query('select * from vip where userName="' + username + '";', function(err, result, file) {
-		console.info(result.length);
-		if (result.length > 0) {
-
-			connection.query('select * from comment', function(error, results, fields) {
-
-				connection.query('insert into comment(userName,journalId) values(' + '"' + username + '"' + ',' + '"' +
-					articleid +
-					'"' + ');',
-					function(error, results, fields) {
-
-					});
-
+app.post('/DZ', function(req, res) {
+	var userId = req.body.userId;
+	var journalId = req.body.journalId;
+	connection.query('select * from goods where journalId="' + journalId + '"', function(err, result, file) {
+		if(err) {
+			connection.query('insert into goods(userId,journalId )values("' + userId + '","' + journalId + '")', function(err, result, file) {
 				connection.query('select * from journal', function(error, results, fields) {
-
-					for (var i = 0; i < results.length; i++) {
-						if (results[i].articleId == articleid) {
-							if (isNaN(results[i].good) == true) {
+					for(var i = 0; i < results.length; i++) {
+						if(results[i].articleId == articleid) {
+							if(isNaN(results[i].good) == true) {
 								results[i].good = 1;
 							} else {
 								results[i].good = parseInt(results[i].good);
@@ -488,30 +500,21 @@ app.get('/DZ', function(req, res) {
 					}
 
 				});
-			});
+
+			})
 		} else {
-			connection.query('select * from comment', function(error, results, fields) {
-
-				for (var x = 0; x < results.length; x++) {
-					if (results[x].userName == username && results[x].journalId == articleid) {
-						console.info("你已经赞过了");
-						res.json("你已经赞过了");
-						return;
-					}
+			console.info(result);
+			for(var i = 0; i < result.length; i++) {
+				if(result[i].userId == userId) {
+					res.json("已赞过");
+					return;
 				}
-
-				connection.query('insert into comment(userName,journalId) values(' + '"' + username + '"' + ',' + '"' +
-					articleid +
-					'"' + ');',
-					function(error, results, fields) {
-
-					});
-
+			}
+			connection.query('insert into goods(userId,journalId )values("' + userId + '","' + journalId + '")', function(err, result, file) {
 				connection.query('select * from journal', function(error, results, fields) {
-
-					for (var i = 0; i < results.length; i++) {
-						if (results[i].articleId == articleid) {
-							if (isNaN(results[i].good) == true) {
+					for(var i = 0; i < results.length; i++) {
+						if(results[i].articleId == articleid) {
+							if(isNaN(results[i].good) == true) {
 								results[i].good = 1;
 							} else {
 								results[i].good = parseInt(results[i].good);
@@ -531,11 +534,14 @@ app.get('/DZ', function(req, res) {
 					}
 
 				});
-			});
 
+			})
 		}
-	})
+
+	});
+
 });
+
 
 // 编辑日志 修改
 app.post("/edit", function(req, res) {
@@ -551,7 +557,7 @@ app.post("/edit", function(req, res) {
 	connection.query(a,
 		function(error, results, fields) {
 
-			if (error) {
+			if(error) {
 				console.log('失败')
 				res.json({
 					"ok": false
@@ -560,7 +566,7 @@ app.post("/edit", function(req, res) {
 				connection.query(a,
 					function(error, results, fields) {
 
-						if (error) {
+						if(error) {
 							console.log('失败')
 							res.json({
 								"ok": false
@@ -569,7 +575,7 @@ app.post("/edit", function(req, res) {
 							connection.query(b,
 								function(error, results, fields) {
 
-									if (error) {
+									if(error) {
 										console.log('失败')
 										res.json({
 											"ok": false
@@ -578,7 +584,7 @@ app.post("/edit", function(req, res) {
 										connection.query(c,
 											function(error, results, fields) {
 
-												if (error) {
+												if(error) {
 													console.log('失败')
 													res.json({
 														"ok": false
@@ -587,7 +593,7 @@ app.post("/edit", function(req, res) {
 													connection.query(d,
 														function(error, results, fields) {
 
-															if (error) {
+															if(error) {
 																console.log('失败')
 																res.json({
 																	"ok": false
@@ -596,7 +602,7 @@ app.post("/edit", function(req, res) {
 																connection.query(e,
 																	function(error, results, fields) {
 
-																		if (error) {
+																		if(error) {
 																			console.log('失败')
 																			res.json({
 																				"ok": false
@@ -619,7 +625,6 @@ app.post("/edit", function(req, res) {
 			}
 		})
 
-
 });
 
 // 注册vip (并加了容错)
@@ -628,14 +633,14 @@ app.post("/reVip", function(req, res) {
 	// select * from vip where userName="wqy";
 	connection.query('select * from vip where userName="' + req.body.userName + '";', function(err, result, file) {
 		console.info(result.length);
-		if (result.length > 0) {
+		if(result.length > 0) {
 			res.json({
 				"w": true
 			})
 		} else {
 			var sqlString = 'insert into vip(userName) values("' + username + '")';
 			connection.query(sqlString, function(err, result, file) {
-				if (err) {
+				if(err) {
 					res.json("未找到");
 				} else {
 					res.json({
@@ -646,8 +651,6 @@ app.post("/reVip", function(req, res) {
 		}
 	})
 
-
 });
-
 
 app.listen(7777);
