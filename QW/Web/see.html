@@ -44,6 +44,12 @@
 			#commentTime {
 				text-align: right;
 			}
+			.rowSee p{
+				color: brown;
+				font-weight: 600;
+				font-style: italic;
+				display: inline-block;
+			}
 		</style>
 	</head>
 
@@ -89,29 +95,33 @@
 
 		<!-- 主体 -->
 		<div class="container content" style="background: ghostwhite; border-radius: 20px;box-shadow: 0 0 5px grey;">
-			<h1 class="col-xs-offset-1" style="color: #2C3E50; font-family: '楷体';">查看文章</h1>
+			<h1 class="col-xs-offset-1" style="color: #2C3E50; ">查看文章</h1>
 			<hr />
-			<div class="row">
+			<div class="row rowSee">
 				<div class="col-md-3 col-md-offset-1">
-					<p style="text-align:center; font-family: '楷体'; font-size: 23px;" id="title">标题:</p>
+					标题:
+					<p style="text-align:center;" id="title"></p>
 				</div>
-				<div class="col-md-3" style="font-family: '楷体'; font-size: 23px;">
+				<div class="col-md-3" >
 					用户id:
-					<p style="text-align:center; font-family: '楷体'; font-size: 23px; display: inline-block;" id="userId"></p>
+					<p style="text-align:center;  display: inline-block;" id="userId"></p>
 				</div>
-				<div class="col-md-3" style="font-family: '楷体'; font-size: 23px;">
+				<div class="col-md-3" >
 					文章编码:
-					<p style="text-align:center; font-family: '楷体'; font-size: 23px; display: inline-block;" id="journalId"></p>
+					<p style="text-align:center; display: inline-block;" id="journalId"></p>
 				</div>
 				<div class="row xxx">
 					<div class="col-md-3 col-md-push-2">
-						<p style="font-family: '楷体'; font-size: 23px;" id="author">作者:</p>
+						作者:
+						<p id="author"></p>
 					</div>
 					<div class="col-md-3 col-md-offset-1">
-						<p style="font-family: '楷体'; font-size: 23px;" id="classify">文章类型:</p>
+						文章类型:
+						<p id="classify"></p>
 					</div>
 					<div class="col-md-3 ">
-						<p id="good" style="font-family: '楷体'; font-size: 23px;">点赞数: </p>
+						点赞数: 
+						<p id="good" ></p>
 					</div>
 					<div class="col-md-1 col-md-pull-1">
 						<button type="button" class="btn btn-default spot" style="color: #5CB85C; font-size: 16px;" id="fans">点赞

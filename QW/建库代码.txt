@@ -3,7 +3,7 @@ drop database boke;
 
 create database boke;
 use boke;
-create table user(userId int auto_increment, userName varchar(20), userPassword varchar(20), key(userId))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table user(userId int auto_increment, userName varchar(20), userPassword varchar(20),vip varchar(20), key(userId))ENGINE=InnoDB DEFAULT CHARSET=utf8;
 insert into user(userName) values('user1');
 update user set userPassword='123' where userId=1;
 
@@ -14,7 +14,7 @@ create table comment(Id int auto_increment,userName varchar(20), title varchar(2
 insert into comment(userName,title,userId,journalId,comments,times) values('user1','rizhi1','1','1','这里是评论的内容','19:24分');
 
 create table goods(goodId int auto_increment, userId varchar(20),journalId varchar(20),key(goodId))ENGINE=InnoDB DEFAULT CHARSET=utf8;
-create table vip(userId int auto_increment, userName varchar(20),key(userId))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 D:\wamp\bin\mysql\mysql5.1.53\bin>mysqldump --opt -hlocalhost -uroot -p --skip-lock-tables 要导出的文件名> 要导出的文件名.sql  
 

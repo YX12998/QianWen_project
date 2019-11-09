@@ -76,7 +76,7 @@ app.get('/', function(req, res) {
 // 获得日志信息
 app.get("/journal", function(req, res) {
 	// 查询数据库
-	var sqlString = 'select * from journal';
+	var sqlString = 'select * from journal order by rand()';
 	connection.query(sqlString, function(err, result, file) {
 		if(err) {
 			res.json("未找到");
@@ -132,7 +132,7 @@ app.post("/search", function(req, res) {
 
 // 判断vip
 app.get("/pdVip", function(req, res) {
-	var sqlString = 'select * from vip where userName="' + username + '"';
+	var sqlString = 'select vip from user where userName="' + username + '"';
 	connection.query(sqlString, function(err, result, file) {
 		if(err) {
 			throw err;
@@ -141,8 +141,9 @@ app.get("/pdVip", function(req, res) {
 			// 	"ok": false
 			// })
 		} else {
+			console.info('pdVip');
 			console.info(result);
-			if(result.length > 0) {
+			if(result[0].vip=="true") {
 				res.json({
 					"ok": true
 				})
@@ -503,7 +504,7 @@ app.post('/DZ', function(req, res) {
 
 			})
 		} else {
-			console.info(result);
+//			console.info(result);
 			for(var i = 0; i < result.length; i++) {
 				if(result[i].userId == userId) {
 					res.json("已赞过");
@@ -631,15 +632,25 @@ app.post("/edit", function(req, res) {
 app.post("/reVip", function(req, res) {
 	// insert into vip(userName) values("user1");
 	// select * from vip where userName="wqy";
-	connection.query('select * from vip where userName="' + req.body.userName + '";', function(err, result, file) {
-		console.info(result.length);
-		if(result.length > 0) {
+	connection.query('select vip from user where userName="' + req.body.userName + '";', function(err, result, file) {
+		console.info('reVip');
+		console.info(result);
+		if(result[0].vip=="true") {
 			res.json({
 				"w": true
 			})
 		} else {
-			var sqlString = 'insert into vip(userName) values("' + username + '")';
-			connection.query(sqlString, function(err, result, file) {
+//			var sqlString = 'insert into vip(userName) values("' + username + '")';
+//			connection.query(sqlString, function(err, result, file) {
+//				if(err) {
+//					res.json("未找到");
+//				} else {
+//					res.json({
+//						"ok": true
+//					});
+//				}
+//			})
+			connection.query('update user set vip="true" where username="' + req.body.userName + '";', function(err, result, file) {
 				if(err) {
 					res.json("未找到");
 				} else {
@@ -648,6 +659,7 @@ app.post("/reVip", function(req, res) {
 					});
 				}
 			})
+			
 		}
 	})
 
