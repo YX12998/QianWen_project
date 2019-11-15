@@ -26,7 +26,7 @@
 					<div class="nav navbar-right" style="color: #EA7864;line-height: 48px;">
 						欢迎：<b id="text"></b>&nbsp;
 						<button type="button" id="logoutBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">登出</button>
-						<button type="button" id="VipBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">注册ViP</button>
+						<a href="buyVip.html" type="button" id="VipBt" class="btn btn-danger" style="font-family: '楷体';opacity: 0.9;">注册ViP</a>
 					</div>
 					
 					<div class="container">
@@ -53,18 +53,26 @@
 			<hr />
 			<div class="row">
 				<div class="col-md-12">
-					<form class="form-horizontal">
+					<form class="form-horizontal" action="personal_pages.html">
+						
 						<div class="form-group form-group-lg">
 							<label class="col-sm-2 control-label" for="formGroupInputLarge">作者:</label>
 							<div class="col-sm-10">
 								<div class="form-control" type="text" style="width: 50%; " id="author"></div>
 							</div>
 						</div>
+						
+						<div class="form-group form-group-lg">
+							<label class="col-sm-2 control-label" for="formGroupInputLarge">文章编号:</label>
+							<div class="col-sm-10">
+								<div class="form-control" type="text" style="width: 50%; " id="id1"></div>
+							</div>
+						</div>
 
 						<div class="form-group form-group-lg">
 							<label class="col-sm-2 control-label" for="formGroupInputLarge">文章标题:</label>
 							<div class="col-sm-10">
-								<input class="form-control" type="text" style="width: 50%; " id="title">
+								<input class="form-control" type="text" style="width: 50%; " id="title" required="required">
 							</div>
 						</div>
 						<div class="form-group form-group-lg">
@@ -101,9 +109,9 @@
 								</div>
 							</div>
 						</div>
-						<br />
+						<br/>
 						<div style="text-align:center;">
-							<input class="btn btn-primary" type="button" id="updata" value="修改" style="width: 80px;">
+							<input class="btn btn-primary" type="submit" id="updata" value="修改" style="width: 80px;">
 						</div>
 						<br />
 					</form>
@@ -169,6 +177,9 @@
 	//  编辑
 	$(function() {
 		$("#updata").click(function() {
+			if($("#title").val()==''){
+				return;
+			}
 			$.ajax({
 				url: '/edit',
 				data: { // 把传递页面的值给后台

@@ -261,7 +261,6 @@ app.get("/see", function(req, res) {
 	// 查询数据库
 	var sqlString = 'select * from journal';
 	connection.query(sqlString, function(err, result, file) {
-		console.info(result);
 		if(err) {
 			res.json("未找到");
 		} else {
@@ -547,7 +546,6 @@ app.post('/DZ', function(req, res) {
 // 编辑日志 修改
 app.post("/edit", function(req, res) {
 
-	console.info(req.body);
 	var a = 'update journal set author="' + req.body.author + '" where articleId=' + req.body.articleId;
 	var b = 'update journal set title="' + req.body.title + '" where articleId=' + req.body.articleId;
 	var c = 'update journal set classify="' + req.body.classify + '" where articleId=' + req.body.articleId;
